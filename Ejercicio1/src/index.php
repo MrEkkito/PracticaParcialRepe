@@ -1,81 +1,47 @@
 <?php
-$categorias = [
-        "principal" => "Personajes principal",
-        "amigos" => "Amigos de shrek",
-        "villano" => "Villanos",
-        "secundario" => "Personajes secundarios"
-];
-
-$personajes = [
-    [
-        "nombre" => "Lord farquad",
-        "desc" => "Un villano no tal alto",
-        "imagen" => "img1.jpg",
-        "categoria" => ["villano", "principal"]
-    ],
-    [
-        "nombre" => "Hermanastra fea",
-        "desc" => "Una de las tres",
-        "imagen" => "img2.jpg",
-        "categoria" => ["secundario"]
-    ], 
-    [
-        "nombre" => "Shrek",
-        "desc" => "Una criatura verde",
-        "imagen" => "img3.jpg",
-        "categoria" => ["principal"]
-    ],
-    [
-        "nombre" => "Burro",
-        "desc" => "No se calla nunca",
-        "imagen" => "img4.jpg",
-        "categoria" => ["principal"]
-    ],
-    [
-        "nombre" => "Jengi",
-        "desc" => "Su papa es el panadero",
-        "imagen" => "img5.jpg",
-        "categoria" => ["secundario"]
-    ]
-];
-
-$filtro = isset($_GET['categoria']) ? $_GET['categoria'] : "todos";
+// index.php
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Examen Parcial - Menú</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .menu {
+            margin-top: 30px;
+        }
+        a {
+            margin: 10px;
+            padding: 12px;
+            background: #108AB1;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            width: 250px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: 0.3s;
+        }
+        a:hover {
+            background: #06D7A0;
+        }
+    </style>
 </head>
 <body>
-    <h1> Personajes de shrek </h1>
-    
-<div class="menu">
-            <a href="?categoria=todos">Todos</a>
-    <?php foreach ($categorias as $key => $valor): ?>
-        <a href="?categoria=<?= $key ?>"><?= $valor ?></a>
-    <?php endforeach; ?>
-</div>
-<div class="personajes">
-    <?php
-    foreach ($personajes as $p) {
-        if ($filtro == "todos" || in_array($filtro, $p["categoria"])) {
-            echo "<div class='card'>";
-            echo "<img src='images/{$p['imagen']}' alt='{$p['nombre']}'>";
-            echo "<h3>{$p['nombre']}</h3>";
-            echo "<p>{$p['desc']}</p>";
-            $cats = [];
-                foreach ($p['categoria'] as $c) {
-            $cats[] = $categorias[$c];
-            }
-            echo "<p class='categoria'>" . implode(", ", $cats) . "</p>";    
-            echo "</div>";
-        }
-    }
-    ?>
-</div>
+    <h1>Examen Parcial - Ejercicios PHP</h1>
+    <div class="menu">
+        <a href="ejercicio1.php">Ejercicio 1: Personajes de Shrek</a>
+        <a href="ejercicio2.php">Ejercicio 2: Conversor de Temperaturas</a>
+        <a href="ejercicio3.php">Ejercicio 3: Compras con IVA y Descuentos</a>
+    </div>
 </body>
 </html>
